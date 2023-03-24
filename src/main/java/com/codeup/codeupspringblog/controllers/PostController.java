@@ -24,19 +24,22 @@ public class PostController {
 
     // GET /posts/create
     @GetMapping("/posts/create")
-    @ResponseBody
     public String postCreateForm() {
         // return string describing viewing the form for creating a post
-        return "Viewing the form for creating a post";
+        return "index";
     }
 
-//     POST /posts/create
 
+//     POST /posts/create
     @PostMapping("/posts/create")
-    public String createPost() {
-        // create new post using the title and body parameters
-        // return string describing creating a new post
-        return "index";
+    public String createPost(@RequestParam String title, @RequestParam String body) {
+        System.out.println(title);
+        System.out.println(body);
+
+       return "redirect:/posts";
+
+
+
 
 
     }

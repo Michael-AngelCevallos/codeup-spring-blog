@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Result!</title>
+</head>
+<body>
+
+
+<h1>You rolled a <span th:text="${roll}"></span>!</h1>
+<h2>You guessed <span th:text="${guess}"></span>.</h2>
+<h2 th:if="${match}">You win!</h2>
+<h2 th:unless="${match}">Sorry, you lose!</h2>
+
+</body>
+</html>

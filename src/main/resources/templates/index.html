@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,12 +7,15 @@
 <body>
 
 <h1>Create Post</h1>
-<form method="post" action="/posts">
-    <label for="title">Title:</label>
-    <input type="text" id="title" name="title"><br>
+<!--<a th:href="@{/about/num=7}"></a>-->
+
+
+<form th:method="POST" th:action="@{/post/create}">
+    <label for="title">Title: </label>
+    <input type="text" id="title" name="title" placeholder="Enter Title">
 
     <label for="body">Body:</label>
-    <textarea id="body" name="body"></textarea><br>
+    <input type="text" id="body" name="body" placeholder="Enter Description">
 
     <button type="submit">Create Post</button>
 </form>
