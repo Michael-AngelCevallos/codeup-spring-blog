@@ -11,7 +11,7 @@ public class HomeController {
 
     @GetMapping("/")
     @ResponseBody
-    public String returnHelloZenith(){
+    public String returnLandingPage(){
         return "This is the landing page!";
     }
 }
