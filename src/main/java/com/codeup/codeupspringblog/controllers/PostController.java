@@ -1,46 +1,47 @@
 package com.codeup.codeupspringblog.controllers;
 
+import com.codeup.codeupspringblog.models.Post;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class PostController {
 
-    // GET /posts
     @GetMapping("/posts")
-    @ResponseBody
-    public String returnPosts() {
-        // return string describing the posts index page
-        return "This is the posts index page";
+    public String returnPosts(Model model) {
+        List<Post> posts = new ArrayList<>(Arrays.asList(
+                new Post("Post on Trees", "Trees are great and sometimes green."),
+                new Post("Post on Cars", "Cars are sometimes red."),
+                new Post("Post on Dogs", "Dogs are sometimes blue.")
+        ));
+        model.addAttribute("posts", posts);
+        return "posts/index";
     }
 
-    // GET /posts/{id}
     @GetMapping("/posts/{id}")
-    @ResponseBody
-    public String returnPost(@PathVariable long id) {
-        // return string describing viewing an individual post
-        return "Viewing post with ID: " + id;
+    public String returnPost(@PathVariable Long id, Model model) {
+        Post post = new Post("Single Post", "This is a post about a single post.");
+        model.addAttribute("post", post);
+        return "posts/show";
     }
 
-    // GET /posts/create
     @GetMapping("/posts/create")
-    public String postCreateForm() {
-        // return string describing viewing the form for creating a post
-        return "index";
+    @ResponseBody
+    public String returnPostCreateForm() {
+        return "Viewing post create form";
     }
 
 
-//     POST /posts/create
     @PostMapping("/posts/create")
-    public String createPost(@RequestParam String title, @RequestParam String body) {
-        System.out.println(title);
-        System.out.println(body);
-
-       return "redirect:/posts";
-
-
-
-
-
+    public String createPost() {
+        return "Creating post...";
     }
+
 }
+
+

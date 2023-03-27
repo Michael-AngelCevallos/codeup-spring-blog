@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+</head>
+<body>
+
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+<h1>Posts</h1>
+
+<div th:each="post : ${posts}">
+    <div th:replace="partials/post-card :: post(${post})"></div>
+    <!--        <h3 th:text="${post.title}"></h3>-->
+    <!--        <p th:text="${post.body}"></p>-->
+</div>
+
+
+
+
+
+</body>
+</html>
