@@ -1,15 +1,40 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Roll Your Dice!</title>
+    <style>
+        body{
+            background: aqua;
+        }
+
+
+        h1{
+            color: red;
+            text-align: center;
+        }
+        a {
+            color:yellow;
+            text-align: center;
+            font-size: 50px;
+        }
+        button{
+            align-content: center;
+        }
+    </style>
+
+
 </head>
+
 <body>
 
+<div>
 <h1>Guess a number:</h1>
+    <img   src="https://previews.123rf.com/images/kchung/kchung1408/kchung140800940/…94085-roll-the-dice-words-on-two-red-dice-isolated-on-white-background.jpg" jsaction="load:XAeZkd;" jsname="HiaYvf" class="n3VNCb pT0Scc KAlRDb" role aria-label alt="Roll The Dice Words On Two Red Dice Isolated On White ..." data-noaft="1" style="width: 300px; height: 300px; margin: 0px;">
+</div>
+
 <form action="#" th:action="@{/roll-dice}" method="get">
-    <input type="text" name="guess"/>
-    <br/>
+
     <a th:href="@{/roll-dice/1}">1</a>
     <a th:href="@{/roll-dice/2}">2</a>
     <a th:href="@{/roll-dice/3}">3</a>
