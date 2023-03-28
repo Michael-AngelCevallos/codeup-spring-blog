@@ -5,16 +5,12 @@ import com.codeup.codeupspringblog.repositories.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
 public class PostController {
 
-//    =====Post Dependency Injection
-
+//    =====Post Dependency Injection ( 14 and lines 16-18)
     private PostRepository postDao;
 
     public PostController(PostRepository postDao){
@@ -24,12 +20,7 @@ public class PostController {
 
     @GetMapping("/posts")
     public String returnPosts(Model model) {
-        List<Post> posts = new ArrayList<>(Arrays.asList(
-                new Post("Post on Trees", "Trees are great and sometimes green."),
-                new Post("Post on Cars", "Cars are sometimes red."),
-                new Post("Post on Dogs", "Dogs are sometimes blue.")
-        ));
-        model.addAttribute("posts", posts);
+        model.addAttribute("posts", postDao.findAll());
         return "posts/index";
     }
 
@@ -41,17 +32,20 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    @ResponseBody
-    public String returnPostCreateForm() {
-        return "Viewing post create form";
+    public String showCreateForm(Model model) {
+        model.addAttribute("post", new Post());
+        return "posts/create";
     }
 
 
     @PostMapping("/posts/create")
-    public String createPost() {
-        return "Creating post...";
+    public String createPost(@RequestParam(name="title") String title, @RequestParam(name="content") String content) {
+        Post newPost = new Post(title, content);
+        postDao.save(newPost);
+        return "redirect:/posts";
     }
 
 }
+
 
 
