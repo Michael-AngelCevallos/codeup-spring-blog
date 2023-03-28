@@ -1,8 +1,20 @@
 package com.codeup.codeupspringblog.models;
 
+import jakarta.persistence.*;
+
+
+@Entity
+@Table
 public class Post {
 
+
+    @Id
+    @Column(columnDefinition = "int(11) UNSIGNED")
+    private long id;
+
+    @Column(length = 100, nullable = false)
     private String title;
+    @Column(columnDefinition = "TEXT")
     private String body;
 
     public Post() {
