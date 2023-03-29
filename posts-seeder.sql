@@ -1,4 +1,4 @@
 use blog_db;
 
-insert into post(id, body, title) VALUES
+insert into posts(id, body, title) VALUES
 (1, 'Pitbull Puppiess Foo', 'Puppies' );

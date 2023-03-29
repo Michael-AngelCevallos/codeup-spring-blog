@@ -10,9 +10,15 @@ import java.util.List;
 @Controller
 public class PostController {
 
-//    =====Post Dependency Injection ( 14 and lines 16-18)
+//    =====Post Dependency Injection - uses a Repo in a controller, and allows all methods of  repo interface to be implemented here( 14 and lines 16-18)
     private PostRepository postDao;
 
+    //can have multiple dependency's here for example  adding comments: (you must make commentRep
+//    private CommentRepository commentDao;
+
+
+
+    // ALL DDependencies use only this one constructor
     public PostController(PostRepository postDao){
         this.postDao = postDao;
     }
@@ -39,9 +45,18 @@ public class PostController {
 
 
     @PostMapping("/posts/create")
-    public String createPost(@RequestParam(name="title") String title, @RequestParam(name="content") String content) {
-        Post newPost = new Post(title, content);
-        postDao.save(newPost);
+    public String createPost(@RequestParam(name="title") String title, @RequestParam(name="body") String body) {
+        Post newPost = new Post(title, body); // creates a post in memory BUT NOT in the DATABASE
+        postDao.save(newPost); // THIS SAVES IT IN MYSQL DATABASE
+        return "redirect:/posts";
+    }
+
+
+    @GetMapping("/posts/edit")
+
+    public String editPost() {
+        Post editPost = new Post(1L, "Updated Title", "Update Body"); // creates a post in memory BUT NOT in the DATABASE
+        postDao.save(editPost); // THIS SAVES IT IN MYSQL DATABASE
         return "redirect:/posts";
     }
 

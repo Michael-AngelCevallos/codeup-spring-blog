@@ -5,5 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface PostRepository extends JpaRepository <Post, Long> {
+
+
+//when you extend from JpaRepository, you implement all CRUD (Create, Read, Update, Delete) Methods to Post
+// You can also make your own custom methods here
+
+public interface PostRepository extends JpaRepository <Post, Long> {  // <Data type, and Data type of Id>   <<---- goes in the brackets
+
 }

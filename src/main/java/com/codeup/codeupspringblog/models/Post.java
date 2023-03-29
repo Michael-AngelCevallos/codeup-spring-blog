@@ -4,16 +4,18 @@ import jakarta.persistence.*;
 
 
 @Entity
-@Table
+@Table(name = "posts")
 public class Post {
 
 
-    @Id
+    @Id // TELLS HIBERNATE THIS YOUR PRIMARY KEY
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // THIS AUTO INCREMENTS ID'S WHEN CREATING NEW ITEMS
     @Column(columnDefinition = "int(11) UNSIGNED")
     private long id;
 
     @Column(length = 100, nullable = false)
     private String title;
+
     @Column(columnDefinition = "TEXT")
     private String body;
 
@@ -24,6 +26,13 @@ public class Post {
         this.title = title;
         this.body = body;
     }
+
+    public Post(Long id, String title, String body) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+    }
+
 
     public String getTitle() {
         return title;

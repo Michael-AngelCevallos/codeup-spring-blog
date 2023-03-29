@@ -70,6 +70,8 @@ public class ProductController {
     @GetMapping("/create/product")
     public String createTheProduct(){
         Product product = new Product("Hammer", 66000 ); // need to havew right constructors in, this inputs a
+        Product product1 = new Product();
+        productsDao.save(product1);
         return "redirect:/products";
     }
 
