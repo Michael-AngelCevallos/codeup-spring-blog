@@ -12,4 +12,7 @@ import java.util.List;
 
 public interface PostRepository extends JpaRepository <Post, Long> {  // <Data type, and Data type of Id>   <<---- goes in the brackets
 
+
+    // adding this eliminates the need to make an Optional in the Controller Classes
+    Post findById(long id);
 }

@@ -8,10 +8,16 @@
     body{
         background-color: cadetblue;
     }
+    div{
+        border: black 10px;
 
+    }
 </style>
 <body>
+
 <h1 th:text="${post.title}"></h1>
+<div >
 <p th:text="${post.body}"></p>
+</div>
 </body>
 </html>

@@ -18,6 +18,9 @@ public class Post {
 
     @Column(columnDefinition = "TEXT")
     private String body;
+    @ManyToOne(cascade = CascadeType.PERSIST)// THIS IS RELATIONSHIP//THINK OF MANYTOONE AS , MANY POST BELONG TO ONLY ONE USER
+    @JoinColumn(name = "user id")
+    private User user;
 
     public Post() {
     }
@@ -27,12 +30,11 @@ public class Post {
         this.body = body;
     }
 
-    public Post(Long id, String title, String body) {
-        this.id = id;
+    public Post(String title, String body, User user) {
         this.title = title;
         this.body = body;
+        this.user = user;
     }
-
 
     public String getTitle() {
         return title;
@@ -48,5 +50,13 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
