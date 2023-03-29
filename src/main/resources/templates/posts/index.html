@@ -10,10 +10,12 @@
 
 <h1>Posts</h1>
 
-<div th:each="post : ${posts}">
+<div th:each="post : ${posts}" >
+
     <div th:replace="partials/post-card :: post(${post})"></div>
     <!--        <h3 th:text="${post.title}"></h3>-->
     <!--        <p th:text="${post.body}"></p>-->
+</div>
 </div>
 
 

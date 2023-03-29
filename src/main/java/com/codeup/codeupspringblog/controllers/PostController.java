@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class PostController {
@@ -26,13 +27,16 @@ public class PostController {
 
     @GetMapping("/posts")
     public String returnPosts(Model model) {
+        // these add the actual new post on the new refreshed index page( they both do the same use ONE)
+//        List<Post> post = postDao.findAll();
         model.addAttribute("posts", postDao.findAll());
         return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
     public String returnPost(@PathVariable Long id, Model model) {
-        Post post = new Post("Single Post", "This is a post about a single post.");
+       Post post = postDao.findById(id).get();// returns post by id when you got to the id by url
+
         model.addAttribute("post", post);
         return "posts/show";
     }
@@ -44,7 +48,7 @@ public class PostController {
     }
 
 
-    @PostMapping("/posts/create")
+    @PostMapping("/posts/create")// this need to be same as the one in the th:action in create.html
     public String createPost(@RequestParam(name="title") String title, @RequestParam(name="body") String body) {
         Post newPost = new Post(title, body); // creates a post in memory BUT NOT in the DATABASE
         postDao.save(newPost); // THIS SAVES IT IN MYSQL DATABASE
