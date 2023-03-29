@@ -35,8 +35,8 @@ public class PostController {
 
     @GetMapping("/posts/{id}")
     public String returnPost(@PathVariable Long id, Model model) {
-       Post post = postDao.findById(id).get();// returns post by id when you got to the id by url
-
+       Post post = postDao.findById(id).get();// returns post by id when you go to the id by url(for ex: .... /posts/2)
+        // Optional<Post> optionalPost = postDao.findById(id); // THIS DOES SAME  AS ABOVE BUT WILL THROW ERROR IF ID VALUE OF POSTS IS NULL
         model.addAttribute("post", post);
         return "posts/show";
     }
