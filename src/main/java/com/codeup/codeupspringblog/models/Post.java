@@ -22,8 +22,18 @@ public class Post {
     @JoinColumn(name = "user id")
     private User user;
 
+//    @ManyToMany(cascade = CascadeType.PERSIST)
+//    @JoinTable(
+//            name = "post categories",
+//            joinColumns = @JoinColumn(name = "post id"),
+//            inverseJoinColumns = @JoinColumn(name = "category id")
+//
+//    private List<PostCategory>  categories;
+//    )
+//
     public Post() {
     }
+
 
     public Post(String title, String body) {
         this.title = title;
@@ -35,6 +45,12 @@ public class Post {
         this.body = body;
         this.user = user;
     }
+
+//    public Post(List<PostCategory> categories) {
+//        this.categories = categories;
+//    }
+
+
 
     public String getTitle() {
         return title;
@@ -59,4 +75,15 @@ public class Post {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public long getId() { return id; }
+    public long setId(Long id){return this.id = id;}
+
+//    public List<PostCategory> getCategories() {
+//        return categories;
+//    }
+
+//    public void setCategories(List<PostCategory> categories) {
+//        this.categories = categories;
+//    }
 }

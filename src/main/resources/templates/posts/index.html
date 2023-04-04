@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Posts</title>
@@ -22,9 +22,16 @@
 <div th:each="post : ${posts}" >
 
     <div th:replace="partials/post-card :: post(${post})"></div>
+
+<!--    BELOW CODE WOULD NORMALLY GO HERE BUT I LINKED THE POST-CARD PARTIALS, THAT'S WHERE THIS CODE IS-->
     <!--        <h3 th:text="${post.title}"></h3>-->
     <!--        <p th:text="${post.body}"></p>-->
+<!--    <h3 th:each="category : ${post.categories}" th:text="${category.name}" />-->
+
+    <div>
+
 </div>
+
 </div>
 
 

@@ -48,38 +48,16 @@
 <body>
 
 <h1> CREATE A POST</h1>
+<form th:action="@{/posts1/create}" th:method="post" th:object="${post}">
+    Title:
+    <input type="text" th:field="*{title}" />
+    <br />
+    Description:
+    <input type="text" th:field="*{body}" />
+    <br />
+    <input type="submit" />
+</form>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-
-<h3> Title </h3>
-            <form method="post" th:action="@{/posts/create}">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="title" placeholder="Title"/>
-                </div><br>
-
-
-<h3>Body </h3>
-                <div class="form-group">
-                    <textarea class="form-control bcontent "  name="body" ></textarea>
-                </div>
-
-<h3>Enter The Category</h3>
-                <div>
-                    <label for="category"></label>
-                    <input type=text name="category" id="category">
-                </div><br>
-
-
-                <div class="form-group">
-                    <input type="submit" name="Submit" value="Submit" class="btn btn-primary form-control" />
-                </div>
-
-            </form>
-        </div>
-    </div>
-</div>
 
 
 </body>

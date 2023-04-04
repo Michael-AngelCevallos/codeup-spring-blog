@@ -17,8 +17,8 @@
 <!--IF YOU WANT TO ONLY RETURN EVERYTHING LESS THAN 100 ON PAGE-->
 <!--    <div th:each="product : ${products}" th:if="${product.costInCents < 100}">-->
 
-  <h3 th:text="${product.name}"></h3>
-  <h3>Cost in cents: <span th:text="${product.costInCents}"></span> </h3>
+  <h3 th:text="${products.name}"></h3>
+  <h3>Cost in cents: <span th:text="${products.costInCents}"></span> </h3>
 </div>
 <br>
 

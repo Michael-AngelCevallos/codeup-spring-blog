@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class ProductController {
 
 
-    private ProductsRepository productsDao;
+    private final ProductsRepository productsDao;
 
     public ProductController(ProductsRepository productsDao){
         this.productsDao = productsDao;
@@ -84,6 +84,41 @@ public class ProductController {
       return "redirect:/products";
     }
 
+    @GetMapping("/jpa/2")
+    @ResponseBody
+    public List<Product> getAllProductsOrderedByCost() {
+        return productsDao.findAllByOrderByCostInCents();
+    }
 
+    @GetMapping("/jpa/3")
+    @ResponseBody
+    public List<Product> getAllProductsOrderedByCostDesc() {
+        return productsDao.findAllByOrderByCostInCentsDesc();
+    }
 
+    @GetMapping("/jpa/4")
+    @ResponseBody
+    public List<Product> getProductByCost() {
+        return productsDao.findByCostInCents(9670);
+    }
+
+    @GetMapping("/jpa/5")
+    @ResponseBody
+    public List<Product> getProductByCostInRange() {
+        return productsDao.searchProductByCostInCentsBetween(500, 1000);
+    }
+
+//    @GetMapping("/jpa/6")
+//    @ResponseBody
+//    public List<String> getNamesById() {
+//        return productsDao.findNameById(1L, 10L);
+//    }
+
+//    @GetMapping("/jpa/7")
+//    @ResponseBody
+//    public List<String> getNamesByIdNative() {
+//        return productsDao.findNameByIdNative(1L, 10L);
+//    }
+//
 }
+

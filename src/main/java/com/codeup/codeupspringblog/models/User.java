@@ -24,6 +24,8 @@ public class User {
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")// "USER" IS DEFINED IN THE POST CLASS UNDER THE MANY TO ONE METHOD
     private List<Post> posts;
 
+
+    // need empty constructor for SpringBoot To Work
     public User() {
     }
 
@@ -76,4 +78,15 @@ public class User {
     public void setPosts(List<Post> posts) {
         this.posts = posts;
     }
+
+
+   // NEEDED FOR AUTHENTICATION/AUTHORIZATION - creates copy of an object with properties of another object
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+        posts = copy.posts;
+    }
+
 }

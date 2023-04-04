@@ -4,23 +4,23 @@ package com.codeup.codeupspringblog.controllers;
 import com.codeup.codeupspringblog.models.Post;
 import com.codeup.codeupspringblog.models.User;
 import com.codeup.codeupspringblog.repositories.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
 public class UserController {
 
-    private final UserRepository userDao;
+    private  UserRepository userDao;
+    private PasswordEncoder passwordEncoder;
 
 
-    public UserController(UserRepository userDao) {
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder) {
         this.userDao = userDao;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/register")// gets you to the form
@@ -43,4 +43,37 @@ public class UserController {
         return "posts/userPosts";
     }
 
+
+    //used for Security Authentification
+
+
+    public UserController() {
+    }
+
+
+
+
+    /** You Would Need These If You didnt have Spring Security Dependency/Authentication */
+
+
+        @GetMapping("/sign-up")
+        public String showSignupForm(Model model){
+            model.addAttribute("user", new User());
+            return "users/sign-up";
+        }
+
+        @PostMapping("/sign-up")
+        public String saveUser(@ModelAttribute User user){
+            String hash = passwordEncoder.encode(user.getPassword());
+            user.setPassword(hash);
+            userDao.save(user);
+            return "redirect:/login";
+        }
+
+
+
+
 }
+
+
+

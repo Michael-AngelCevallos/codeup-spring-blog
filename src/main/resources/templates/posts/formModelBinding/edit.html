@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        body{
+            background-color: cadetblue;
+        }
+
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<body>
+<h1>Edit Post</h1>
+<!--Might have to get rid of action below to make it work-->
+<form  th:method="post" th:object="${post}">
+    Title:
+    <input th:field="*{title}" />
+    <br />
+    Description:
+    <input th:field="*{body}" />
+    <br />
+    <input type="submit" />
+</form>
+
+
+
+</body>
+</html>
