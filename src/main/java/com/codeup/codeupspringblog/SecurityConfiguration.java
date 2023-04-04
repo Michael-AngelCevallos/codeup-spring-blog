@@ -55,7 +55,7 @@ public class SecurityConfiguration {
                 //gives a list of end points ad what to do with them
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/", "/posts1", "/posts/{id}", "/sign-up") // anyone can see home, the ads pages, and sign up
+                .requestMatchers("/", "/posts1", "/posts/{id}", "/sign-up", "/login") // anyone can see home, the ads pages, and sign up
                 .permitAll()  // allows everyone to come to these end points
 
                 /* Pages that require authentication */

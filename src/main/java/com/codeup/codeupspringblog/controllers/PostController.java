@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -112,9 +113,10 @@ public class PostController {
     }
 
     @PostMapping("posts1/create")
-    public String postCreateForm(@ModelAttribute Post post){
-
-//        User user = userDao.findById(1L).get();
+    public String postCreateForm(@ModelAttribute Post post, Principal principal){
+        String username = principal.getName(); // sets logged in user the owner of new created post
+        User user = userDao.findByUsername(username);
+        post.setUser(user);
         postDao.save(post);
         return "redirect:/posts1";
     }

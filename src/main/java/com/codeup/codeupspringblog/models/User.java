@@ -19,7 +19,7 @@ public class User {
     private String username;
     @Column(nullable = false, length = 50)
     private String email;
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false)
     private String password;
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")// "USER" IS DEFINED IN THE POST CLASS UNDER THE MANY TO ONE METHOD
     private List<Post> posts;

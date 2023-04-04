@@ -14,8 +14,8 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    private  UserRepository userDao;
-    private PasswordEncoder passwordEncoder;
+    private  final UserRepository userDao;
+    private final PasswordEncoder passwordEncoder;
 
 
     public UserController(UserRepository userDao, PasswordEncoder passwordEncoder) {
@@ -43,19 +43,6 @@ public class UserController {
         return "posts/userPosts";
     }
 
-
-    //used for Security Authentification
-
-
-    public UserController() {
-    }
-
-
-
-
-    /** You Would Need These If You didnt have Spring Security Dependency/Authentication */
-
-
         @GetMapping("/sign-up")
         public String showSignupForm(Model model){
             model.addAttribute("user", new User());
@@ -69,8 +56,6 @@ public class UserController {
             userDao.save(user);
             return "redirect:/login";
         }
-
-
 
 
 }
