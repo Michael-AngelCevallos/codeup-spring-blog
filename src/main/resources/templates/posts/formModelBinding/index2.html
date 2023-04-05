@@ -28,6 +28,10 @@
     <form th:action="@{posts1/{id}/edit}" method="get">
         <button type="submit" class="btn btn-warning">Edit Post</button>
     </form><br>
+
+    <form th:action="@{/posts1/{id}/delete}" method="post">
+        <button type="submit"  class="btn btn-danger">Delete Post</button>
+    </form>
 </div>
 
 <br><br>

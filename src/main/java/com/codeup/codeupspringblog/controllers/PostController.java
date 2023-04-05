@@ -5,6 +5,7 @@ import com.codeup.codeupspringblog.repositories.PostRepository;
 import com.codeup.codeupspringblog.repositories.ProductsRepository;
 import com.codeup.codeupspringblog.repositories.UserRepository;
 import com.codeup.codeupspringblog.services.EmailService;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -45,7 +46,7 @@ public class PostController {
 
     @GetMapping("/posts/{id}")
     public String returnPost(@PathVariable Long id, Model model) {
-        Optional<Post> post = postDao.findById(id);
+        Optional<Post> post = postDao.findById(id) ;
         model.addAttribute(post == null ? new Post("not found", "Could not find that ad") : post);// returns post by id when you go to the id by url(for ex: .... /posts/2)
         // Optional<Post> optionalPost = postDao.findById(id); // THIS DOES SAME  AS ABOVE BUT WILL THROW ERROR IF ID VALUE OF POSTS IS NULL
         model.addAttribute("post", post);
@@ -143,7 +144,10 @@ public class PostController {
 
 
     @PostMapping("/posts1/{id}/edit")
-    public String updatePost(@PathVariable Long id, @ModelAttribute("post") Post post) {
+    public String updatePost(@PathVariable Long id, @ModelAttribute("post") Post post, Principal principal) {
+        String username = principal.getName();
+        User user = userDao.findByUsername(username);
+        post.setUser(user); // sets user for database to be logged in user
         Post editedPost = postDao.findById(id).get();
         editedPost.setTitle(post.getTitle());
         editedPost.setBody(post.getBody());
@@ -165,6 +169,12 @@ public String secondTest(){
         return "/home";
 }
 
+
+    @PostMapping("/posts1/{id}/delete")
+    public String deleteOrder(@PathVariable("id") Long id) {
+        postDao.deleteById(id);
+        return "redirect:/posts1";
+    }
 
     }
 

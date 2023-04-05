@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html<html xmlns:th="http://www.thymeleaf.org"
+           xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -16,6 +17,14 @@
 </head>
 <body>
 
+<div sec:authorize="isAuthenticated()">
+<!--    This content is only shown to authenticated users.-->
+
+    User ID: <span th:text="${#authentication.principal.id}"/>
+    Username: <span th:text="${#authentication.principal.username}"/>
+    Email: <span th:text="${#authentication.principal.email}"/>
+</div>
+
 <body>
 <h1>Edit Post</h1>
 <!--Might have to get rid of action below to make it work-->
@@ -23,11 +32,13 @@
     Title:
     <input th:field="*{title}" />
     <br />
+
     Description:
     <input th:field="*{body}" />
     <br />
     <input type="submit" />
 </form>
+
 
 
 

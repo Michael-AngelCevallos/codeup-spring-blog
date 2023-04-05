@@ -79,6 +79,9 @@ public class Post {
     public long getId() { return id; }
     public long setId(Long id){return this.id = id;}
 
+
+    }
+
 //    public List<PostCategory> getCategories() {
 //        return categories;
 //    }
@@ -86,4 +89,3 @@ public class Post {
 //    public void setCategories(List<PostCategory> categories) {
 //        this.categories = categories;
 //    }
-}
