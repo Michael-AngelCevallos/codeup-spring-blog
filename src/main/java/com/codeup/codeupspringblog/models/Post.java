@@ -1,56 +1,39 @@
 package com.codeup.codeupspringblog.models;
 
-import jakarta.persistence.*;
 
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "posts")
 public class Post {
 
-
-    @Id // TELLS HIBERNATE THIS YOUR PRIMARY KEY
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // THIS AUTO INCREMENTS ID'S WHEN CREATING NEW ITEMS
-    @Column(columnDefinition = "int(11) UNSIGNED")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(length = 100, nullable = false)
+    @Column(nullable = false)
     private String title;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
-    @ManyToOne(cascade = CascadeType.PERSIST)// THIS IS RELATIONSHIP//THINK OF MANYTOONE AS , MANY POST BELONG TO ONLY ONE USER
-    @JoinColumn(name = "user id")
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
-//    @ManyToMany(cascade = CascadeType.PERSIST)
-//    @JoinTable(
-//            name = "post categories",
-//            joinColumns = @JoinColumn(name = "post id"),
-//            inverseJoinColumns = @JoinColumn(name = "category id")
-//
-//    private List<PostCategory>  categories;
-//    )
-//
     public Post() {
     }
-
 
     public Post(String title, String body) {
         this.title = title;
         this.body = body;
     }
 
-    public Post(String title, String body, User user) {
+    public Post(long id, String title, String body) {
+        this.id = id;
         this.title = title;
         this.body = body;
-        this.user = user;
     }
-
-//    public Post(List<PostCategory> categories) {
-//        this.categories = categories;
-//    }
-
-
 
     public String getTitle() {
         return title;
@@ -68,6 +51,14 @@ public class Post {
         this.body = body;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public User getUser() {
         return user;
     }
@@ -75,17 +66,4 @@ public class Post {
     public void setUser(User user) {
         this.user = user;
     }
-
-    public long getId() { return id; }
-    public long setId(Long id){return this.id = id;}
-
-
-    }
-
-//    public List<PostCategory> getCategories() {
-//        return categories;
-//    }
-
-//    public void setCategories(List<PostCategory> categories) {
-//        this.categories = categories;
-//    }
+}

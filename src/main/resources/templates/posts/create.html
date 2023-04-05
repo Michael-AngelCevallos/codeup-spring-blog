@@ -1,95 +1,24 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <meta charset="UTF-8">
-    <title>Create A Post!</title>
-</head>
-<style>
-
-    body{
-        background-color: #7a8189;
-    }
-
-    h1{
-        text-align: center;
-    }
-    .btn-file {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .btn-file input[type=file] {
-        position: absolute;
-        top: 0;
-        right: 0;
-        min-width: 100%;
-        min-height: 100%;
-        font-size: 100px;
-        text-align: right;
-        filter: alpha(opacity=0);
-        opacity: 0;
-        outline: none;
-        background: white;
-        cursor: inherit;
-        display: block;
-    }
-
-    input[readonly] {
-        background-color: white !important;
-        cursor: text !important;
-    }
-
-    /* this is only due to codepen display don't use this outside of codepen */
-    .container {
-        padding-top: 20px;
-    }
-</style>
-
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials/partials.html :: head('Create Post')"></head>
 <body>
-
-<h1> CREATE A POST</h1>
-
-<div sec:authorize="isAuthenticated()">
-    This content is only shown to authenticated users.
-
-    User ID: <span th:text="${#authentication.principal.id}"/>
-    Username: <span th:text="${#authentication.principal.username}"/>
-    Email: <span th:text="${#authentication.principal.email}"/>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-
-<h3> Title </h3>
-            <form method="post" th:action="@{/posts/create}">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="title" placeholder="Title"/>
-                </div><br>
-
-
-<h3>Body </h3>
-                <div class="form-group">
-                    <textarea class="form-control bcontent "  name="body" ></textarea>
-                </div>
-
-<h3>Enter The Category</h3>
-                <div>
-                    <label for="category"></label>
-                    <input type=text name="category" id="category">
-                </div><br>
-
-
-                <div class="form-group">
-                    <input type="submit" name="Submit" value="Submit" class="btn btn-primary form-control" />
-                </div>
-
-            </form>
+<nav th:replace="partials/partials.html :: nav"></nav>
+<header th:replace="partials/partials.html :: header('Add a Post')"></header>
+<main class="container">
+    <form th:action="@{/posts}" th:method="POST" th:object="${newPost}">
+        <div class="mb-3">
+            <label class="form-label" for="title">Title</label>
+            <input th:field="*{title}" class="form-control" id="title" type="text" name="title" placeholder="Enter post title">
         </div>
-    </div>
-</div>
-
-
+        <div class="mb-3">
+            <label class="form-label" for="body">Body</label>
+            <textarea th:field="*{body}" class="form-control" id="body" name="body" placeholder="Enter body of text"></textarea>
+        </div>
+        <div class="d-grid">
+            <button class="btn btn-dark btn-block">Create Post</button>
+        </div>
+    </form>
+    <th:block th:replace="partials/partials.html :: scripts"></th:block>
+</main>
 </body>
 </html>
