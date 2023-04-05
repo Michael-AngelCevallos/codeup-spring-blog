@@ -1,23 +1,17 @@
 package com.codeup.codeupspringblog.controllers;
 
-import jakarta.persistence.Id;
+
+
+import jakarta.persistence.GeneratedValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+@Controller
+public class AuthenticationController {
 
-
-    @Controller
-    public class AuthenticationController {
-
-        @GetMapping("/login")
-        public String showLoginForm() {
-            return "users/login";
-        }
-
-
-
-
-
+    @GetMapping("/login")
+    public String returnLoginPage() {
+        return "users/login";
     }
 
-
+}
