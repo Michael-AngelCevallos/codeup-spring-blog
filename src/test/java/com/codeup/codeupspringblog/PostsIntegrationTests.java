@@ -87,5 +87,9 @@ public class PostsIntegrationTests {
                                 .param("body", "for sale"))
 
                 .andExpect(status().is3xxRedirection());
+
+
+
+
     }
 }

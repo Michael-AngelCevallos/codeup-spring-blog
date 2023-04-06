@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{partials/partials.html :: head('Sign Up')}"></head>
+<body>
+<nav th:replace="~{partials/partials.html :: nav}"></nav>
+<header th:replace="~{partials/partials.html :: header('Sign Up')}"></header>
+
+
+<h1>Are You A Company Or User?</h1>
+
+<div class="d-grid mt-3">
+  <form th:action="@{/company/sign-up}" method="get">
+    <button type="submit">Company</button>
+  </form>
+</div>
+
+<div class="d-grid mt-3">
+  <form th:action="@{/users/sign-up}" method="get" >
+    <button type="submit">User</button>
+  </form>
+</div>
+
+
+
+
+</body>
+</html>
