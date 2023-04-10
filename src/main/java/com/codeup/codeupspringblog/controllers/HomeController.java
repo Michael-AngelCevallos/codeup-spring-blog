@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
 
-    @GetMapping("/")
+
+//    this should take you to main page
+
+    @GetMapping("/home")
     public String returnLandingPage() {
         return "index";
     }
