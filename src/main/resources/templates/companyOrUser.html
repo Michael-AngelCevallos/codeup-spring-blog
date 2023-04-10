@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{partials/partials.html :: head('Sign Up')}"></head>
+<style>
+  h1{
+    text-align: center;
+  }
+
+  #user-btn{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+</style>
+
 <body>
 <nav th:replace="~{partials/partials.html :: nav}"></nav>
 <header th:replace="~{partials/partials.html :: header('Sign Up')}"></header>
@@ -10,13 +22,13 @@
 
 <div class="d-grid mt-3">
   <form th:action="@{/company/sign-up}" method="get">
-    <button type="submit">Company</button>
+    <button type="submit" class="btn btn-dark">Company</button>
   </form>
 </div>
 
 <div class="d-grid mt-3">
   <form th:action="@{/users/sign-up}" method="get" >
-    <button type="submit">User</button>
+    <button type="submit" class="btn btn-dark" id="user-btn">User</button>
   </form>
 </div>
 
