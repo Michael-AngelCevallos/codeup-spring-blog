@@ -18,9 +18,11 @@ public class CompanyController {
 
     private final PasswordEncoder passwordEncoder;
 
+
     public CompanyController(CompanyRepository companyDao, PasswordEncoder passwordEncoder ){
         this.companyDao = companyDao;
         this.passwordEncoder = passwordEncoder;
+
     }
 
 
@@ -50,4 +52,10 @@ public class CompanyController {
         model.addAttribute("company", new Company());
         return "/companies/companyLogin";
     }
+
+//    @GetMapping("/company")
+//    public String home(Model model) {
+//        model.addAttribute("companyName", companyName );
+//        return "/companies/companyProfile";
+//    }
 }

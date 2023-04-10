@@ -29,8 +29,8 @@ public class Company {
     @Column(nullable = false)
     private String companyPassword;
 
-//    @Column(nullable = false, length = 50)
-//    private String companyNumber;
+    @Column(nullable = false, length = 50)
+    private String companyNumber;
 
 
     public Company() {
@@ -45,22 +45,22 @@ public class Company {
         this.companyPassword = companyPassword;
     }
 
-    public Company(long id, String companyName, String jobBoardUrl, List<Post> post, String companyEmail, String companyPassword) {
+    public Company(long id, String companyName, String jobBoardUrl, List<Post> post, String companyEmail, String companyPassword, String companyNumber) {
         this.id = id;
         this.companyName = companyName;
         this.jobBoardUrl = jobBoardUrl;
         this.posts = post;
         this.companyEmail = companyEmail;
         this.companyPassword = companyPassword;
-//        this.companyNumber = companyNumber;
+        this.companyNumber = companyNumber;
     }
 
-    public Company(String companyName, String jobBoardUrl, List<Post> post, String companyEmail) {
+    public Company(String companyName, String jobBoardUrl, List<Post> post, String companyEmail, String companyNumber) {
         this.companyName = companyName;
         this.jobBoardUrl = jobBoardUrl;
         this.posts = post;
         this.companyEmail = companyEmail;
-//        this.companyNumber = companyNumber;
+        this.companyNumber = companyNumber;
     }
 
 
@@ -112,11 +112,11 @@ public class Company {
         this.companyPassword = companyPassword;
     }
 
-//    public String getCompanyNumber() {
-//        return companyNumber;
-//    }
-//
-//    public void setCompanyNumber(String companyNumber) {
-//        this.companyNumber = companyNumber;
-//    }
+    public String getCompanyNumber() {
+        return companyNumber;
+    }
+
+    public void setCompanyNumber(String companyNumber) {
+        this.companyNumber = companyNumber;
+    }
 }
