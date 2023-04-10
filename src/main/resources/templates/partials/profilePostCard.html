@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Company Profile Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+
+
+<!-- Header -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">About Us</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="http://localhost:63342/codeup-spring-blog/templates/contactUs.html?_ijt=pmcbbmv2ckrk9gsh1boj021k8e&_ij_reload=RELOAD_ON_SAVE">Contact Us</a>
+        </li>
+    </ul>
+</nav>
+
+
+<!-- Content -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+
+                <div class="card-header" th:text="${companyName}" id="companyName"></div>
+
+                <div class="card-body">
+<!--                    <img src="company_logo.png" alt="Company Logo" class="img-fluid">-->
+                    <p >Company Address</p>
+                    <p>Phone: 123-456-7890</p>
+                    <p>Email: info@company.com</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-9">
+            <h1>Job Posts</h1>
+            <div class="card">
+                <div class="card-header">
+                    Job Title 1
+                </div>
+                <div class="card-body">
+                    <p>Job Description goes here</p>
+                    <p>Qualifications go here</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="card">
+                <div class="card-header">
+                    Job Title 2
+                </div>
+
+                <div class="card-body">
+                    <p>Job Description goes here</p>
+                    <p>Qualifications go here</p>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="card">
+                <div class="card-header">
+                    Job Title 3
+                </div>
+
+                <div class="card-body">
+                    <p>Job Description goes here</p>
+                    <p>Qualifications go here</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+</body>
+</html>
