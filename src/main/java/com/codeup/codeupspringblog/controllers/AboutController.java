@@ -12,7 +12,7 @@ public class AboutController {
     @GetMapping("/about")
     public String returnAboutPage(@RequestParam int num) {
         System.out.println(num);
-        return "about";
+        return "aboutUs";
     }
 
 }
