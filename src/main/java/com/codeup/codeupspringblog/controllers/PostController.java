@@ -75,13 +75,13 @@ public class PostController {
         postToUpdate.setTitle(postUpdates.getTitle());
         postToUpdate.setBody(postUpdates.getBody());
         postsDao.save(postToUpdate);
-        return "redirect:/posts1";
+        return "redirect:/posts";
     }
 
     @PostMapping("/posts/{id}/delete")
     public String deletePost(@PathVariable long id) {
         postsDao.deleteById(id);
-        return "redirect:/posts1";
+        return "redirect:/posts";
     }
 
 }
