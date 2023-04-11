@@ -50,7 +50,7 @@ public class PostController {
 
 
     @PostMapping("/posts")
-    public String createPost(@ModelAttribute Post post) {
+    public String postCreateForm(@ModelAttribute Post post) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         System.out.println(user.getId());
         // create post in the database...
