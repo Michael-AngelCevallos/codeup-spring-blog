@@ -16,12 +16,27 @@
         margin-right: 25px;
         margin-bottom: 10px;
     }
+
+    #create-btn{
+        display:flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
 </style>
 
 
 <body>
 <nav th:replace="partials/partials.html :: nav"></nav>
 <header th:replace="partials/partials.html :: header('Posts')"></header>
+
+
+<div id="create-btn">
+    <form th:action="@{/posts/create}">
+<button class="btn btn-success">Create A Post</button>
+    </form>
+</div>
+
+
 <main class="container">
     <div class="row gy-4">
         <div class="col-12 col-md-6" th:each="post : ${posts}">
