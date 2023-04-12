@@ -17,6 +17,9 @@ public class Post {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
 
+    @Column(nullable = false)
+    private String price;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -40,6 +43,12 @@ public class Post {
         this.body = body;
     }
 
+    public Post(String title, String body, String price) {
+        this.title = title;
+        this.body = body;
+        this.price = price;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -54,6 +63,14 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public long getId() {
