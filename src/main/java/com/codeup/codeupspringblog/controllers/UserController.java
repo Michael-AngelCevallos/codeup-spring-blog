@@ -58,6 +58,14 @@ public class UserController {
 
     }
 
+    //     Delete user by ID
+    @PostMapping("/users/{id}/delete")
+    public String deleteUserById(@PathVariable("id") long id) {
+        // Check if the user exists before deleting
+        userDao.deleteById(id);
+        return "redirect:/login";
+    }
+
     @GetMapping("users/profile")
     public String userProfile(){
     return "/users/userProfile";

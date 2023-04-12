@@ -16,8 +16,8 @@ import java.util.Optional;
 @Controller
 public class PostController {
 
-    private PostRepository postsDao;
-    private UserRepository userDao;
+    private final PostRepository postsDao;
+    private final UserRepository userDao;
 
     public PostController(PostRepository postsDao, UserRepository userDao) {
         this.postsDao = postsDao;
@@ -74,6 +74,7 @@ public class PostController {
         Post postToUpdate = postsDao.findById(postUpdates.getId()).get();
         postToUpdate.setTitle(postUpdates.getTitle());
         postToUpdate.setBody(postUpdates.getBody());
+        postToUpdate.setPrice(postToUpdate.getPrice());
         postsDao.save(postToUpdate);
         return "redirect:/posts";
     }
